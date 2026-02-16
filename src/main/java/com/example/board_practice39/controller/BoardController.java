@@ -33,17 +33,23 @@ public class BoardController {
     }
 
     // 글쓰기 폼
+    @GetMapping("/write")
+    public String writeForm() {
+        return "board/write";
+    }
+
+    // 글쓰기 처리
     @PostMapping("/write")
     public String write(String title, String content, String writer, @RequestParam(required = false) MultipartFile file)
             throws IOException {
         boardService.save(title, content, writer, file);
-        return "redirection:/board/list";
+        return "redirect:/board/list";
     }
 
     // 상세보기
     @GetMapping("/detail/{id}")
-    public String detail(@PathVariable("id") int id, Model model) {
-        model.addAttribute("board", boardService.findById(null));
+    public String detail(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("board", boardService.findById(id));
         return "board/detail";
     }
 }

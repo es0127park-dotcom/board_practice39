@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 200px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        button,
+        .btn {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-blue {
+            background: #007bff;
+        }
+
+        .btn-gray {
+            background: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>글쓰기</h1>
+    <form action="/board/write" method="post" enctype="multipart/form-data">
+        <label>제목</label>
+        <input type="text" name="title" required>
+
+        <label>작성자</label>
+        <input type="text" name="writer" required>
+
+        <label>내용</label>
+        <textarea name="content" required></textarea>
+
+        <label>첨부파일 (이미지)</label>
+        <input type="file" name="file" accept="image/*">
+        <br><br>
+
+        <button type="submit" class="btn-blue">등록</button>
+        <a href="/board/list" class="btn btn-gray">목록</a>
+    </form>
+</body>
+
+</html>
